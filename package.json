@@ -1,0 +1,22 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "Finding difference between two files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Naryzhnaia/qa-auto-engineer-javascript-project-87.git"
+  },
+  "author": "Naryzhnaia Anna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Naryzhnaia/qa-auto-engineer-javascript-project-87/issues"
+  },
+  "homepage": "https://github.com/Naryzhnaia/qa-auto-engineer-javascript-project-87#readme",
+  "dependencies": {
+    "commander": "^13.1.0"
+  }
+}
