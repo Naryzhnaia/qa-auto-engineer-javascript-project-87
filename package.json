@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "Finding difference between two files",
-  "main": "index.js",
+  "main": "gendiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +15,7 @@
   "bugs": {
     "url": "https://github.com/Naryzhnaia/qa-auto-engineer-javascript-project-87/issues"
   },
+  "type": "module",
   "homepage": "https://github.com/Naryzhnaia/qa-auto-engineer-javascript-project-87#readme",
   "dependencies": {
     "commander": "^13.1.0"

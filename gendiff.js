@@ -1,10 +1,16 @@
-const { Command } = require('commander')
+import { Command } from 'commander'
+//const { Command } = require('commander')
 const program = new Command()
+import genDiff from './parseJson.js'
 
 program
   .name('gendiff')
   .description('Compares two configuration files and shows a difference.')
   .version('1.0.0')
   .option('-f, --format <type>', 'output format')
+  .arguments('<filepath1> <filepath2>', 'files to compare')
+  .action((filepath1, filepath2) => {
+    console.log(genDiff(filepath1, filepath2))
+  })
 
 program.parse()
