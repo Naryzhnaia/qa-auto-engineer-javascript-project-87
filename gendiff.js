@@ -1,5 +1,4 @@
 import { Command } from 'commander'
-//const { Command } = require('commander')
 const program = new Command()
 import genDiff from './parseJson.js'
 
