@@ -1,4 +1,4 @@
-name: ci-app-workflow
+name: main-check
 on: 
   - push
   - pull_request

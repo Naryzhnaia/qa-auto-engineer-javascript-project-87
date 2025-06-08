@@ -1,11 +1,11 @@
 install: 
 	npm ci
 
-make lint:
+lint:
 	npx eslint .
 
-make lint fix:
+lint-fix:
 	npx eslint --fix .
 
-make test:
+test:
 	NODE_OPTIONS=--experimental-vm-modules npx jest
