@@ -10,7 +10,7 @@ const getFileContent = (filePath) => {
   return fileContent
 }
 
-const compareObjects = (object1, object2) => {
+const getDifference = (object1, object2) => {
   const propObject1 = Object.keys(object1)
   const propObject2 = Object.keys(object2)
   const properties = _.union(propObject1, propObject2)
@@ -35,9 +35,15 @@ const compareObjects = (object1, object2) => {
 }
 
 export default (filePath1, filePath2) => {
+  if (!filePath1.includes('.json')) {
+    throw new Error(`'${filePath1}' is not JSON`)
+  }
+  if (!filePath2.includes('.json')) {
+    throw new Error(`'${filePath2}' is not JSON`)
+  }
   const fileContent1 = getFileContent(filePath1)
   const fileContent2 = getFileContent(filePath2)
   const object1 = JSON.parse(fileContent1)
   const object2 = JSON.parse(fileContent2)
-  return compareObjects(object1, object2)
+  return getDifference(object1, object2)
 }

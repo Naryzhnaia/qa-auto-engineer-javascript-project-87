@@ -1,6 +1,6 @@
 import { Command } from 'commander'
 const program = new Command()
-import genDiff from './parseJson.js'
+import genDiff from './getDifference.js'
 
 program
   .name('gendiff')
