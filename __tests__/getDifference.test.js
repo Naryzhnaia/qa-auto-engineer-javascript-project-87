@@ -71,7 +71,7 @@ test('Есть параметр только во втором файле', () =
     expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('+ work : null')
 })
 
-test.only('Проверка результата целиком', () => {   
+test('Проверка результата целиком', () => {   
     expect(genDiff(filePathToYaml1, filePathToYaml2)).toBe(`{
  - name : Anna
  + name : Alex
