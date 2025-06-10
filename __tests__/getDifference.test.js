@@ -80,4 +80,27 @@ test('Проверка результата целиком', () => {
  + work : null
 }`)
 })
+
+describe('вывод сравнения файлов в формате plain', () => {
+test('Есть общий параметр c разными значениями', () => {
+    expect(genDiff(filePath1, filePath2)).toMatch(`Property 'timeout' was updated. From 50 to 20`)
+})
+
+test('Есть параметр только в первом файле', () => {
+    expect(genDiff(filePath1, filePath2)).toMatch(`Property 'follow' was removed`)
+    expect(genDiff(filePath1, filePath2)).toMatch(`Property 'proxy' was removed`)
+})
+
+test('Есть параметр только во втором файле', () => {
+    expect(genDiff(filePath1, filePath2)).toMatch(`Property 'verbose' was added with value: true`)
+})
+
+test('Проверка результата целиком', () => {
+    //expect(genDiff(filePath1, filePath2)).toEqual(expectedResult)    
+    expect(genDiff(filePath1, filePath2)).toBe(`Property 'follow' was removed
+Property 'proxy' was removed
+Property 'timeout' was updated. From 50 to 20
+Property 'verbose' was added with value: true`)
+})
+})
 })

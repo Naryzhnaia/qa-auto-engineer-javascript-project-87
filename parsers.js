@@ -12,6 +12,8 @@ const getFileContent = (filePath) => {
 
 export default (filePath1, filePath2) => {
   //Может добавить свитч-кейс по типу файла?
+  const fileType1 = path.extname(filePath1)
+  const fileType2 = path.extname(filePath2)
   const fileContent1 = getFileContent(filePath1)
   const fileContent2 = getFileContent(filePath2)
   let object1

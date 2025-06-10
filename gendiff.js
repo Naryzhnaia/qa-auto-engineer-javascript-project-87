@@ -1,6 +1,6 @@
 import { Command } from 'commander'
 const program = new Command()
-import genDiff from './getDifference.js'
+import genDiff from './formatters/index.js'
 
 program
   .name('gendiff')
@@ -8,8 +8,8 @@ program
   .version('1.0.0')
   .option('-f, --format <type>', 'output format')
   .arguments('<filepath1> <filepath2>', 'files to compare')
-  .action((filepath1, filepath2) => {
-    console.log(genDiff(filepath1, filepath2))
+  .action((filepath1, filepath2, options) => {
+    console.log(genDiff(filepath1, filepath2, options.format))
   })
 
 program.parse()
