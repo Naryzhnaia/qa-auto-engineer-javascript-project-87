@@ -10,22 +10,16 @@ const getFileContent = (filePath) => {
   return fileContent
 }
 
-export default (filePath1, filePath2) => {
-  //Может добавить свитч-кейс по типу файла?
-  const fileType1 = path.extname(filePath1)
-  const fileType2 = path.extname(filePath2)
-  const fileContent1 = getFileContent(filePath1)
-  const fileContent2 = getFileContent(filePath2)
-  let object1
-  let object2
-  if (filePath1.endsWith('.json') && filePath2.endsWith('.json')) {
-    object1 = JSON.parse(fileContent1)
-    object2 = JSON.parse(fileContent2)
-  }
-
-  if (filePath1.endsWith('.yaml') && filePath2.endsWith('.yaml')) {
-    object1 = yaml.load(fileContent1)
-    object2 = yaml.load(fileContent2)
-  }
-  return [object1, object2]
+export default (filePath) => {
+    const fileType = path.extname(filePath)
+    const fileContent = getFileContent(filePath)
+    switch (fileType) {
+      case '.json':
+        return JSON.parse(fileContent)
+      case '.yaml':
+      case '.yml':
+        return yaml.load(fileContent)
+      default:
+        throw new Error(`Unknown type of file: '${filePath}'`)
+    }
 }
