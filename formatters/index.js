@@ -14,7 +14,7 @@ export default (filePath1, filePath2, format = 'standart') => {
     } else if (format === 'json') {
       return getJsonDiff(object1, object2)
     } else {
-      throw new Error(`Unknown format '${format}'`)
+      return getStandartDiff(object1, object2)
     }
   } catch (e) {
     console.log(e.message)
