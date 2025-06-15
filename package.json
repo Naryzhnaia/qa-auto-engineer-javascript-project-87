@@ -2,6 +2,9 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "description": "Finding difference between two files",
+  "bin": {
+    "gendiff": "gendiff.js"
+  },
   "main": "gendiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
