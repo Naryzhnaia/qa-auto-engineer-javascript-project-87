@@ -5,11 +5,12 @@ import genDiff from '../formatters/index.js'
 
 let filePath1
 let filePath2
-let expectedResult
 let notJson
 let filePathToYaml1
 let filePathToYaml2
+let expectedResultStandart
 let expectedResultJsonFormat
+let expectedResultPlainFormat
 
 beforeAll(() => {
   const __filename = fileURLToPath(import.meta.url)
@@ -21,8 +22,9 @@ beforeAll(() => {
   notJson = getFixturePath('notJson.jpeg')
   filePathToYaml1 = getFixturePath('yaml1.yaml')
   filePathToYaml2 = getFixturePath('yaml2.yaml')
-  expectedResult = fs.readFileSync(getFixturePath('expectedString.txt'), 'utf-8')
+  expectedResultStandart = fs.readFileSync(getFixturePath('expectedStandartFormat.txt'), 'utf-8')
   expectedResultJsonFormat = fs.readFileSync(getFixturePath('expectedJsonFormat.json'), 'utf-8')
+  expectedResultPlainFormat = fs.readFileSync(getFixturePath('expectedPlainFormat.txt'), 'utf-8')
 })
 
 describe('Сравниваем JSON-файлы', () => {
@@ -44,14 +46,7 @@ describe('Сравниваем JSON-файлы', () => {
   })
 
   test('Проверка результата целиком', () => {
-    //expect(genDiff(filePath1, filePath2)).toEqual(expectedResult)
-    expect(genDiff(filePath1, filePath2)).toBe(`{
- - name : Anna
- + name : Alex
-   age : 28
- - isMarried : true
- + work : null
-}`)
+    expect(genDiff(filePath1, filePath2)).toEqual(expectedResultStandart)
   })
 })
 
@@ -76,13 +71,7 @@ describe('Сравниваем YAML-файлы', () => {
   })
 
   test('Проверка результата целиком', () => {
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toBe(`{
- - name : Anna
- + name : Alex
-   age : 28
- - isMarried : true
- + work : null
-}`)
+    expect(genDiff(filePathToYaml1, filePathToYaml2)).toEqual(expectedResultStandart)
   })
 })
 
@@ -105,11 +94,10 @@ describe('Вывод сравнения файлов в формате plain', (
     )
   })
 
-  test.skip('НУЖЕН ФИКС Проверка результата целиком', () => {
-    const result = `Property 'name' was updated. From Anna to Alex
-Property 'isMarried' was removed
-Property 'work' was added with value: null`
-    expect(genDiff(filePath1, filePath2, 'plain')).toBe(result)
+  test('Проверка результата целиком', () => {
+    console.log(`received is \n ${genDiff(filePath1, filePath2,'plain')}`)
+    console.log(`expected is \n ${expectedResultPlainFormat}`)
+    expect(genDiff(filePath1, filePath2, 'plain')).toEqual(expectedResultPlainFormat)
   })
 })
 

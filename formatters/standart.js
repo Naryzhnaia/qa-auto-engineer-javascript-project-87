@@ -14,16 +14,10 @@ export default (object1, object2) => {
         difference = `${difference}\n + ${property} : ${object2[property]}`
       }
     }
-    if (
-      object1.hasOwnProperty(property) === true &&
-      object2.hasOwnProperty(property) === false
-    ) {
+    if (object1.hasOwnProperty(property) === true && object2.hasOwnProperty(property) === false) {
       difference = `${difference}\n - ${property} : ${object1[property]}`
     }
-    if (
-      object1.hasOwnProperty(property) === false &&
-      object2.hasOwnProperty(property) === true
-    ) {
+    if (object1.hasOwnProperty(property) === false && object2.hasOwnProperty(property) === true) {
       difference = `${difference}\n + ${property} : ${object2[property]}`
     }
   }

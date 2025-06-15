@@ -1,0 +1,3 @@
+Property 'name' was updated. From Anna to Alex
+Property 'isMarried' was removed
+Property 'work' was added with value: null

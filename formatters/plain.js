@@ -20,5 +20,5 @@ export default (object1, object2) => {
       difference = `${difference}\nProperty '${property}' was added with value: ${object2[property]}`
     }
   }
-  return `${difference}`
+  return `${difference.trim()}`
 }
