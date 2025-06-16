@@ -29,20 +29,20 @@ beforeAll(() => {
 
 describe('Сравниваем JSON-файлы', () => {
   test('Есть общий параметр c одинаковым значением', () => {
-    expect(genDiff(filePath1, filePath2)).toMatch('age : 28')
+    expect(genDiff(filePath1, filePath2)).toMatch('age: 28')
   })
 
   test('Есть общий параметр c разными значениями', () => {
-    expect(genDiff(filePath1, filePath2)).toMatch('- name : Anna')
-    expect(genDiff(filePath1, filePath2)).toMatch('+ name : Alex')
+    expect(genDiff(filePath1, filePath2)).toMatch('- name: Anna')
+    expect(genDiff(filePath1, filePath2)).toMatch('+ name: Alex')
   })
 
   test('Есть параметр только в первом файле', () => {
-    expect(genDiff(filePath1, filePath2)).toMatch('- isMarried : true')
+    expect(genDiff(filePath1, filePath2)).toMatch('- isMarried: true')
   })
 
   test('Есть параметр только во втором файле', () => {
-    expect(genDiff(filePath1, filePath2)).toMatch('+ work : null')
+    expect(genDiff(filePath1, filePath2)).toMatch('+ work: null')
   })
 
   test('Проверка результата целиком', () => {
@@ -52,22 +52,20 @@ describe('Сравниваем JSON-файлы', () => {
 
 describe('Сравниваем YAML-файлы', () => {
   test('Есть общий параметр c одинаковым значением', () => {
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('age : 28')
+    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('age: 28')
   })
 
   test('Есть общий параметр c разными значениями', () => {
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('- name : Anna')
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('+ name : Alex')
+    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('- name: Anna')
+    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('+ name: Alex')
   })
 
   test('Есть параметр только в первом файле', () => {
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch(
-      '- isMarried : true'
-    )
+    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('- isMarried: true')
   })
 
   test('Есть параметр только во втором файле', () => {
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('+ work : null')
+    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('+ work: null')
   })
 
   test('Проверка результата целиком', () => {
@@ -95,8 +93,6 @@ describe('Вывод сравнения файлов в формате plain', (
   })
 
   test('Проверка результата целиком', () => {
-    console.log(`received is \n ${genDiff(filePath1, filePath2,'plain')}`)
-    console.log(`expected is \n ${expectedResultPlainFormat}`)
     expect(genDiff(filePath1, filePath2, 'plain')).toEqual(expectedResultPlainFormat)
   })
 })

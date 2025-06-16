@@ -1,7 +1,7 @@
 {
- - name : Anna
- + name : Alex
-   age : 28
- - isMarried : true
- + work : null
+    age: 28
+  - isMarried: true
+  - name: Anna
+  + name: Alex
+  + work: null
 }
