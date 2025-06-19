@@ -1,7 +1,7 @@
-import getStandartDiff from './standart.js'
-import getPlainDiff from './plain.js'
-import getJsonDiff from './json.js'
-import parse from '../parsers.js'
+import getStandartDiff from './formatters/standart.js'
+import getPlainDiff from './formatters/plain.js'
+import getJsonDiff from './formatters/json.js'
+import parse from './parsers.js'
 
 export default (filePath1, filePath2, format = 'standart') => {
   try {
