@@ -5,7 +5,6 @@ import genDiff from '../index.js'
 
 let filePath1
 let filePath2
-let notJson
 let filePathToYaml1
 let filePathToYaml2
 let expectedResultStandart
@@ -19,7 +18,6 @@ beforeAll(() => {
   const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename)
   filePath1 = getFixturePath('json1.json')
   filePath2 = getFixturePath('json2.json')
-  notJson = getFixturePath('notJson.jpeg')
   filePathToYaml1 = getFixturePath('yaml1.yaml')
   filePathToYaml2 = getFixturePath('yaml2.yaml')
   expectedResultStandart = fs.readFileSync(getFixturePath('expectedStandartFormat.txt'), 'utf-8')
