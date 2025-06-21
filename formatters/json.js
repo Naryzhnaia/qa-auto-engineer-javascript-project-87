@@ -10,7 +10,8 @@ export default (object1, object2) => {
     if (Object.hasOwn(object1, property) && Object.hasOwn(object2, property)) {
       if (object1[property] === object2[property]) {
         difference[property] = object1[property]
-      } else {
+      } 
+      else {
         difference[property] = object2[property]
       }
     }
@@ -18,6 +19,5 @@ export default (object1, object2) => {
       difference[property] = object2[property]
     }
   }
-  
   return JSON.stringify(difference, null, 0)
 }

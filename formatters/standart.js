@@ -10,7 +10,8 @@ export default (object1, object2) => {
     if (Object.hasOwn(object1, property) && Object.hasOwn(object2, property)) {
       if (object1[property] === object2[property]) {
         difference = `${difference}\n    ${property}: ${object1[property]}`
-      } else {
+      } 
+      else {
         difference = `${difference}\n  - ${property}: ${object1[property]}`
         difference = `${difference}\n  + ${property}: ${object2[property]}`
       }
