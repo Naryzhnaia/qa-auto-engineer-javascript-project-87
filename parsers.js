@@ -1,4 +1,3 @@
-import { cwd } from 'node:process'
 import path from 'path'
 import fs from 'fs'
 import yaml from 'js-yaml'
