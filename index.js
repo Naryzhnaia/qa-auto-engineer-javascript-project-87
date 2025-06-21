@@ -9,14 +9,18 @@ export default (filePath1, filePath2, format = 'standart') => {
     const object2 = parse(filePath2)
     if (format === 'standart') {
       return getStandartDiff(object1, object2)
-    } else if (format === 'plain') {
+    }
+    else if (format === 'plain') {
       return getPlainDiff(object1, object2)
-    } else if (format === 'json') {
+    }
+    else if (format === 'json') {
       return getJsonDiff(object1, object2)
-    } else {
+    }
+    else {
       return getStandartDiff(object1, object2)
     }
-  } catch (e) {
+  }
+  catch (e) {
     console.log(e.message)
   }
 }

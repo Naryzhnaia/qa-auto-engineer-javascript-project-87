@@ -8,7 +8,6 @@ export default [
     },
     rules: {
       'semi': ['error', 'never'],
-      '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
     },
   },
 ]
