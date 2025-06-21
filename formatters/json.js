@@ -18,5 +18,6 @@ export default (object1, object2) => {
       difference[property] = object2[property]
     }
   }
+  
   return JSON.stringify(difference, null, 0)
 }
