@@ -7,7 +7,7 @@ export default (object1, object2) => {
   const properties = _.sortBy(unsortedProperties)
   let difference = ''
   for (const property of properties) {
-    if (object1.hasOwnProperty(property) && object2.hasOwnProperty(property)) {
+    if (Object.hasOwn(object1, property) && Object.hasOwn(object2, property)) {
       if (object1[property] === object2[property]) {
         difference = `${difference}\n    ${property}: ${object1[property]}`
       } else {
@@ -15,10 +15,10 @@ export default (object1, object2) => {
         difference = `${difference}\n  + ${property}: ${object2[property]}`
       }
     }
-    if (object1.hasOwnProperty(property) === true && object2.hasOwnProperty(property) === false) {
+    if (Object.hasOwn(object1, property) === true && Object.hasOwn(object2, property) === false) {
       difference = `${difference}\n  - ${property}: ${object1[property]}`
     }
-    if (object1.hasOwnProperty(property) === false && object2.hasOwnProperty(property) === true) {
+    if (Object.hasOwn(object1, property) === false && Object.hasOwn(object2, property) === true) {
       difference = `${difference}\n  + ${property}: ${object2[property]}`
     }
   }

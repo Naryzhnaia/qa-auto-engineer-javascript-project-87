@@ -14,7 +14,9 @@ let expectedResultPlainFormat
 beforeAll(() => {
   const __filename = fileURLToPath(import.meta.url)
   const __dirname = path.dirname(__filename)
-  const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename)
+  const getFixturePath = (filename) => {
+    path.join(__dirname, '..', '__fixtures__', filename)
+  }
   filePath1 = getFixturePath('json1.json')
   filePath2 = getFixturePath('json2.json')
   filePathToYaml1 = getFixturePath('yaml1.yaml')
