@@ -10,7 +10,7 @@ export default (object1, object2) => {
     if (object1.hasOwnProperty(property) && object2.hasOwnProperty(property)) {
       if (object1[property] !== object2[property]) {
         difference = `${difference}\nProperty '${property}' was updated. From ${object1[property]} to ${object2[property]}`
-      } 
+      }
     }
     if (object1.hasOwnProperty(property) === true && object2.hasOwnProperty(property) === false
     ) {

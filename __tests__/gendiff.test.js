@@ -15,7 +15,6 @@ beforeAll(() => {
   const __filename = fileURLToPath(import.meta.url)
   const __dirname = path.dirname(__filename)
   const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename)
-  
   filePath1 = getFixturePath('json1.json')
   filePath2 = getFixturePath('json2.json')
   filePathToYaml1 = getFixturePath('yaml1.yaml')
@@ -73,21 +72,15 @@ describe('Сравниваем YAML-файлы', () => {
 
 describe('Вывод сравнения файлов в формате plain', () => {
   test('Есть общий параметр c разными значениями', () => {
-    expect(genDiff(filePath1, filePath2, 'plain')).toMatch(
-      `Property 'name' was updated. From Anna to Alex`
-    )
+    expect(genDiff(filePath1, filePath2, 'plain')).toMatch(`Property 'name' was updated. From Anna to Alex`)
   })
 
   test('Есть параметр только в первом файле', () => {
-    expect(genDiff(filePath1, filePath2, 'plain')).toMatch(
-      `Property 'isMarried' was removed`
-    )
+    expect(genDiff(filePath1, filePath2, 'plain')).toMatch(`Property 'isMarried' was removed`)
   })
 
   test('Есть параметр только во втором файле', () => {
-    expect(genDiff(filePath1, filePath2, 'plain')).toMatch(
-      `Property 'work' was added with value: null`
-    )
+    expect(genDiff(filePath1, filePath2, 'plain')).toMatch(`Property 'work' was added with value: null`)
   })
 
   test('Проверка результата целиком', () => {
