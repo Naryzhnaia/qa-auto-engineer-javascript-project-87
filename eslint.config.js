@@ -7,7 +7,7 @@ export default [
       '@stylistic': stylistic,
     },
     rules: {
-      'semi': ['error', 'never'],
+      semi: ['error', 'never'],
     },
   },
 ]
