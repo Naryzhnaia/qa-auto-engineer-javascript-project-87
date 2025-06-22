@@ -24,3 +24,5 @@
 [![Actions Status](https://github.com/Naryzhnaia/qa-auto-engineer-javascript-project-87/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Naryzhnaia/qa-auto-engineer-javascript-project-87/actions)
 
 [![main-check](https://github.com/Naryzhnaia/qa-auto-engineer-javascript-project-87/actions/workflows/main.yml/badge.svg)](https://github.com/Naryzhnaia/qa-auto-engineer-javascript-project-87/actions/workflows/main.yml)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Naryzhnaia_qa-auto-engineer-javascript-project-87&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Naryzhnaia_qa-auto-engineer-javascript-project-87)
