@@ -7,3 +7,5 @@ json2.json
 __fixtures__/notJson.jpeg
 
 coverage/
+
+bin/getdiff.js

@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url'
 import path from 'path'
 import fs from 'fs'
-import genDiff from '../index.js'
+import genDiff from '../bin/index.js'
 
 let filePath1
 let filePath2
