@@ -7,9 +7,10 @@ let filePath1
 let filePath2
 let filePathToYaml1
 let filePathToYaml2
-let expectedResultStandart
+let expectedResultStylish
 let expectedResultJsonFormat
 let expectedResultPlainFormat
+let formats
 
 beforeAll(() => {
   const __filename = fileURLToPath(import.meta.url)
@@ -21,81 +22,35 @@ beforeAll(() => {
   filePath2 = getFixturePath('json2.json')
   filePathToYaml1 = getFixturePath('yaml1.yaml')
   filePathToYaml2 = getFixturePath('yaml2.yaml')
-  expectedResultStandart = fs.readFileSync(getFixturePath('expectedStandartFormat.txt'), 'utf-8')
+  console.log(`fixture path - ${filePath1} ${filePath2} ${filePathToYaml1}`)
+  expectedResultStylish = fs.readFileSync(getFixturePath('expectedStylishFormat.txt'), 'utf-8')
   expectedResultJsonFormat = fs.readFileSync(getFixturePath('expectedJsonFormat.json'), 'utf-8')
   expectedResultPlainFormat = fs.readFileSync(getFixturePath('expectedPlainFormat.txt'), 'utf-8')
+  formats = [['stylish', expectedResultStylish], ['plain', expectedResultPlainFormat], ['json', expectedResultJsonFormat]]
 })
 
-describe('Сравниваем JSON-файлы', () => {
-  test('Есть общий параметр c одинаковым значением', () => {
-    expect(genDiff(filePath1, filePath2)).toMatch('age: 28')
-  })
-
-  test('Есть общий параметр c разными значениями', () => {
-    expect(genDiff(filePath1, filePath2)).toMatch('- name: Anna')
-    expect(genDiff(filePath1, filePath2)).toMatch('+ name: Alex')
-  })
-
-  test('Есть параметр только в первом файле', () => {
-    expect(genDiff(filePath1, filePath2)).toMatch('- isMarried: true')
-  })
-
-  test('Есть параметр только во втором файле', () => {
-    expect(genDiff(filePath1, filePath2)).toMatch('+ work: null')
-  })
-
-  test('Проверка результата целиком', () => {
-    expect(genDiff(filePath1, filePath2)).toEqual(expectedResultStandart)
-  })
-})
-
-describe('Сравниваем YAML-файлы', () => {
-  test('Есть общий параметр c одинаковым значением', () => {
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('age: 28')
-  })
-
-  test('Есть общий параметр c разными значениями', () => {
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('- name: Anna')
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('+ name: Alex')
-  })
-
-  test('Есть параметр только в первом файле', () => {
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('- isMarried: true')
-  })
-
-  test('Есть параметр только во втором файле', () => {
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toMatch('+ work: null')
-  })
-
-  test('Проверка результата целиком', () => {
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toEqual(expectedResultStandart)
-  })
-})
-
-describe('Вывод сравнения файлов в формате plain', () => {
-  test('Есть общий параметр c разными значениями', () => {
-    expect(genDiff(filePath1, filePath2, 'plain')).toMatch(`Property 'name' was updated. From Anna to Alex`)
-  })
-
-  test('Есть параметр только в первом файле', () => {
-    expect(genDiff(filePath1, filePath2, 'plain')).toMatch(`Property 'isMarried' was removed`)
-  })
-
-  test('Есть параметр только во втором файле', () => {
-    expect(genDiff(filePath1, filePath2, 'plain')).toMatch(`Property 'work' was added with value: null`)
-  })
-
-  test('Проверка результата целиком', () => {
-    expect(genDiff(filePath1, filePath2, 'plain')).toEqual(expectedResultPlainFormat)
-  })
-})
-
-describe('Вывод сравнения файлов в формате json', () => {
+describe('Вывод сравнения файлов без указания формата', () => {
   test('Сравниваем JSON-файлы: проверка результата целиком', () => {
-    expect(genDiff(filePath1, filePath2, 'json')).toEqual(expectedResultJsonFormat)
+    expect(genDiff(filePath1, filePath2)).toEqual(expectedResultStylish)
   })
 
   test('Сравниваем YAML-файлы: проверка результата целиком', () => {
-    expect(genDiff(filePathToYaml1, filePathToYaml2, 'json')).toEqual(expectedResultJsonFormat)
+    expect(genDiff(filePathToYaml1, filePathToYaml2)).toEqual(
+      expectedResultStylish
+    )
+  })
+})
+
+describe('Вывод сравнения файлов в разных форматах: stylish, plain, json', () => {
+  test('Сравниваем JSON-файлы: проверка результата целиком', () => {
+    formats.forEach(([format, result]) => {
+      expect(genDiff(filePath1, filePath2, format)).toEqual(result)
+    })
+  })
+
+  test('Сравниваем YAML-файлы: проверка результата целиком', () => {
+    formats.forEach(([format, result]) => {
+      expect(genDiff(filePathToYaml1, filePathToYaml2, format)).toEqual(result)
+    })
   })
 })

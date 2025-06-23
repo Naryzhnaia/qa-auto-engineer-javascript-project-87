@@ -9,3 +9,5 @@ __fixtures__/notJson.jpeg
 coverage/
 
 bin/getdiff.js
+
+gendiff.test.copy.js
