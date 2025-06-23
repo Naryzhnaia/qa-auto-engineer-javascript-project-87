@@ -35,9 +35,7 @@ describe('Вывод сравнения файлов без указания ф�
   })
 
   test('Сравниваем YAML-файлы: проверка результата целиком', () => {
-    expect(genDiff(filePathToYaml1, filePathToYaml2)).toEqual(
-      expectedResultStylish
-    )
+    expect(genDiff(filePathToYaml1, filePathToYaml2)).toEqual(expectedResultStylish)
   })
 })
 
