@@ -1,23 +1,38 @@
-Вычислитель отличий
+# Вычислитель отличий
 
 "Вычислитель отличий" сравнивает два файла формата json или yaml(yml) и выводит в консоль разницу файлов.
 Разницу можно получить в формате строки, в описательном формате или в виде json.
 
-Установка проекта
+### Установка проекта "Игры разума"
 Для установки и запуска проекта используйте операционную систему на основе Linux, либо WSL (Ubuntu на Windows).
 Также необходим интерпретатор NodeJS от 20 версии.
 Установите зависимости с помощью команды 'npm ci'.
 Установите пакет в систему с помощью 'npm link'.
 
-Команды
-Все возможности по команде 'gendiff -h'
-Чтобы получить результат сравнения в строковом формате, укажите путь до файлов в команде 'gendiff myfiles/file.json myfiles/file2.json'.
-Чтобы получить результат сравнения в описательном формате, укажите путь до файлов и формат -f plain 'gendiff -f plain myfiles/file.json myfiles/file2.json'.
-Чтобы получить результат сравнения в виде json, укажите путь до файлов и формат -f json 'gendiff -f json myfiles/file.json myfiles/file2.json'.
+### Команды
+Все возможности по команде 
 
+  `gendiff -h`
+  
+Чтобы получить результат сравнения в строковом формате, укажите путь до файлов в команде 
+
+  `gendiff myfiles/file.json myfiles/file2.json`
+
+Чтобы получить результат сравнения в описательном формате, укажите путь до файлов и формат -f plain 
+
+  `gendiff -f plain myfiles/file.json myfiles/file2.json`
+
+Чтобы получить результат сравнения в виде json, укажите путь до файлов и формат -f json 
+
+  `gendiff -f json myfiles/file.json myfiles/file2.json`
+
+### Аскинемы для демонстрации примеров работы
 [Asciinema for comparing json-files](https://asciinema.org/a/ZIErssZbRsfa5pCtCFqdtAZbY)
+
 [Asciinema for comparing yaml-files](https://asciinema.org/a/QetD3YLp8JaNDJjUyO77kyskV)
+
 [Asciinema for plain format](https://asciinema.org/a/DBSzyUU1kJrW6xGgYEtf7Cwq6)
+
 [Asciinema for json format](https://asciinema.org/a/4mWzlLEd5619w4DgSpmik0Uyu)
 
 ### Hexlet tests and linter status:
