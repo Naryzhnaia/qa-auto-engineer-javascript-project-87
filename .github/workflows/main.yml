@@ -13,7 +13,5 @@ jobs:
         run: make test
       - name : run linter
         run : make lint
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: check test coverage
+        run : make test-coverage
