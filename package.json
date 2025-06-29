@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Finding difference between two files",
   "bin": {
-    "gendiff": "src/gendiff.js"
+    "gendiff": "bin/gendiff.js"
   },
-  "main": "bin/index.js",
+  "main": "bin/gendiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

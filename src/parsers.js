@@ -1,17 +1,4 @@
-import path from 'path'
-import fs from 'fs'
-import yaml from 'js-yaml'
-
-const getFileContent = (filePath) => {
-  const currentDir = process.cwd()
-  const fullFilePath = path.resolve(currentDir, filePath)
-  const fileContent = fs.readFileSync(fullFilePath)
-  return fileContent
-}
-
-export default (filePath) => {
-  const fileType = path.extname(filePath)
-  const fileContent = getFileContent(filePath)
+export default function parse(fileType, fileContent) {
   switch (fileType) {
     case '.json':
       return JSON.parse(fileContent)

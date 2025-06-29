@@ -10,4 +10,6 @@ coverage/
 
 bin/getdiff.js
 
-gendiff.test.copy.js
+gendiff.test.old1.js
+
+gendiff.test.old2.js
