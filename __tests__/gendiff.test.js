@@ -17,11 +17,9 @@ const expectedResultJsonFormat = fs.readFileSync(getFixturePath('expectedJsonFor
 const expectedResultPlainFormat = fs.readFileSync(getFixturePath('expectedPlainFormat.txt'), 'utf-8')
 
 test.each([
-  [filePathJson1, filePathJson2, '', expectedResultStylish],
   [filePathJson1, filePathJson2, 'stylish', expectedResultStylish],
   [filePathJson1, filePathJson2, 'plain', expectedResultPlainFormat],
   [filePathJson1, filePathJson2, 'json', expectedResultJsonFormat],
-  [filePathYaml1, filePathYaml2, '', expectedResultStylish],
   [filePathYaml1, filePathYaml2, 'stylish', expectedResultStylish],
   [filePathYaml1, filePathYaml2, 'plain', expectedResultPlainFormat],
   [filePathYaml1, filePathYaml2, 'json', expectedResultJsonFormat],

@@ -1,3 +1,5 @@
+import yaml from 'js-yaml'
+
 export default function parse(fileType, fileContent) {
   switch (fileType) {
     case '.json':
