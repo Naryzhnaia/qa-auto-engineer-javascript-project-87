@@ -24,6 +24,6 @@ test.each([
   [filePathYaml1, filePathYaml2, 'plain', expectedResultPlainFormat],
   [filePathYaml1, filePathYaml2, 'json', expectedResultJsonFormat],
 ])('genDiff(%s, %s, %s) returns expected result', (file1, file2, format, expected) => {
-    expect(genDiff(file1, file2, format)).toEqual(expected)
+  expect(genDiff(file1, file2, format)).toEqual(expected)
   }
 )

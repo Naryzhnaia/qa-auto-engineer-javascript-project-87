@@ -8,6 +8,6 @@ export default function parse(fileType, fileContent) {
     case '.yml':
       return yaml.load(fileContent)
     default:
-      throw new Error(`Unknown type of file: '${filePath}'`)
+      throw new Error(`Unknown type of file: '${fileType}'`)
   }
 }
