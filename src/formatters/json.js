@@ -1,22 +1,12 @@
 import _ from 'lodash'
+import getObjectDiff from './getObjectDiff.js'
 
-export default (object1, object2) => {
-  const propObject1 = Object.keys(object1)
-  const propObject2 = Object.keys(object2)
-  const unsortedProperties = _.union(propObject1, propObject2)
-  const properties = _.sortBy(unsortedProperties)
+export default function getDiffJson(object1, object2) {
+  const properties = getObjectDiff(object1, object2)
   let difference = {}
   for (const property of properties) {
-    if (Object.hasOwn(object1, property) && Object.hasOwn(object2, property)) {
-      if (object1[property] === object2[property]) {
-        difference[property] = object1[property]
-      }
-      else {
-        difference[property] = object2[property]
-      }
-    }
-    if (Object.hasOwn(object1, property) === false && Object.hasOwn(object2, property) === true) {
-      difference[property] = object2[property]
+    if (property.type === 'unchanged' || property.type === 'added' || property.type === 'updated') {
+      difference[property.key] = object2[property.key]
     }
   }
   return JSON.stringify(difference, null, 0)

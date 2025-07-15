@@ -1,25 +1,25 @@
 import _ from 'lodash'
+import getObjectDiff from './getObjectDiff.js'
 
-export default (object1, object2) => {
-  const propObject1 = Object.keys(object1)
-  const propObject2 = Object.keys(object2)
-  const unsortedProperties = _.union(propObject1, propObject2)
-  const properties = _.sortBy(unsortedProperties)
+export default function getDiffPlain(object1, object2) {
+  const properties = getObjectDiff(object1, object2)
   let difference = ''
   for (const property of properties) {
-    if (Object.hasOwn(object1, property) && Object.hasOwn(object2, property)) {
-      if (object1[property] !== object2[property]) {
-        difference = `${difference}\nProperty '${property}' was updated. From ${object1[property]} to ${object2[property]}`
-      }
-    }
-    if (Object.hasOwn(object1, property) === true && Object.hasOwn(object2, property) === false
-    ) {
-      difference = `${difference}\nProperty '${property}' was removed`
-    }
-    if (Object.hasOwn(object1, property) === false && Object.hasOwn(object2, property) === true
-    ) {
-      difference = `${difference}\nProperty '${property}' was added with value: ${object2[property]}`
+    switch (property.type) {
+      case 'added':
+        difference = `${difference}\nProperty '${property.key}' was added with value: ${object2[property.key]}`
+        continue
+      case 'updated':
+        difference = `${difference}\nProperty '${property.key}' was updated. From ${object1[property.key]} to ${object2[property.key]}`
+        continue
+      case 'removed':
+        difference = `${difference}\nProperty '${property.key}' was removed`
+        continue
+      case 'unchanged':
+        continue
+      default:
+      throw new Error(`Unknown type: '${property.type}'`)
     }
   }
-  return `${difference.trim()}`
+  return difference.trim()
 }

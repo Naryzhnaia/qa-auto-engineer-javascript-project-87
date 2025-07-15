@@ -1,13 +1,13 @@
 import yaml from 'js-yaml'
 
-export default function parse(fileType, fileContent) {
-  switch (fileType) {
-    case '.json':
-      return JSON.parse(fileContent)
-    case '.yaml':
-    case '.yml':
-      return yaml.load(fileContent)
+export default function parse(contentType, contentString) {
+  switch (contentType) {
+    case 'json':
+      return JSON.parse(contentString)
+    case 'yaml':
+    case 'yml':
+      return yaml.load(contentString)
     default:
-      throw new Error(`Unknown type of file: '${fileType}'`)
+      throw new Error(`Unknown type: '${contentType}'`)
   }
 }
