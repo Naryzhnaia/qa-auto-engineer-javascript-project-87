@@ -14,8 +14,7 @@ export default function getObjectDiff(object1, object2) {
         result.push({ key: property, type: 'updated' })
       }
     }
-    if (Object.hasOwn(object1, property) === false && Object.hasOwn(object2, property) === true
-    ) {
+    if (Object.hasOwn(object1, property) === false && Object.hasOwn(object2, property) === true) {
       result.push({ key: property, type: 'added' })
     }
     if (Object.hasOwn(object1, property) === true && Object.hasOwn(object2, property) === false) {
