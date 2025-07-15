@@ -2,8 +2,6 @@ import { fileURLToPath } from 'url'
 import path from 'path'
 import fs from 'fs'
 import genDiff from '../src/formatters/index.js'
-import stylish from '../src/formatters/stylish.js'
-import plain from '../src/formatters/plain.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import getObjectDiff from './getObjectDiff.js'
 
 export default function getDiffStylish(object1, object2) {

@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import getObjectDiff from './getObjectDiff.js'
 
 export default function getDiffPlain(object1, object2) {
@@ -18,7 +17,7 @@ export default function getDiffPlain(object1, object2) {
       case 'unchanged':
         continue
       default:
-      throw new Error(`Unknown type: '${property.type}'`)
+        throw new Error(`Unknown type: '${property.type}'`)
     }
   }
   return difference.trim()

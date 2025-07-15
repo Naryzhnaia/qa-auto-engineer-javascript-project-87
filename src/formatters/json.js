@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import getObjectDiff from './getObjectDiff.js'
 
 export default function getDiffJson(object1, object2) {
