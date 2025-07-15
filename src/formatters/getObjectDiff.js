@@ -10,7 +10,8 @@ export default function getObjectDiff(object1, object2) {
     if (Object.hasOwn(object1, property) && Object.hasOwn(object2, property)) {
       if (object1[property] === object2[property]) {
         result.push({ key: property, type: 'unchanged' })
-      } else {
+      } 
+      else {
         result.push({ key: property, type: 'updated' })
       }
     }
