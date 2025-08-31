@@ -1,5 +1,3 @@
-import getObjectDiff from './getTreeDiff.js'
-
 export default function getDiffJson(tree) {
   let difference = {}
   for (const property of tree) {
