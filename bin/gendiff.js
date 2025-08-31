@@ -2,7 +2,7 @@
 
 import { Command } from 'commander'
 const program = new Command()
-import getFormatedDiff from '../src/formatters/index.js'
+import getDiff from '../src/index.js'
 
 program
   .name('gendiff')
@@ -11,7 +11,7 @@ program
   .option('-f, --format <type>', 'output format: plain or json')
   .arguments('<filepath1> <filepath2>', 'files to compare')
   .action((filepath1, filepath2, options) => {
-    console.log(getFormatedDiff(filepath1, filepath2, options.format))
+    console.log(getDiff(filepath1, filepath2, options.format))
   })
 
 program.parse()

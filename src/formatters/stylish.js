@@ -1,25 +1,24 @@
-import getObjectDiff from './getObjectDiff.js'
+import getObjectDiff from './getTreeDiff.js'
 
-export default function getDiffStylish(object1, object2) {
-  const properties = getObjectDiff(object1, object2)
+export default function getDiffStylish(tree) {
   let difference = ''
-  for (const property of properties) {
-    switch (property.type) {
+  for (const property of tree) {
+    switch (property.status) {
       case 'added':
-        difference = `${difference}\n  + ${property.key}: ${object2[property.key]}`
+        difference = `${difference}\n  + ${property.key}: ${property.value}`
         continue
       case 'updated':
-        difference = `${difference}\n  - ${property.key}: ${object1[property.key]}`
-        difference = `${difference}\n  + ${property.key}: ${object2[property.key]}`
+        difference = `${difference}\n  - ${property.key}: ${property.oldValue}`
+        difference = `${difference}\n  + ${property.key}: ${property.newValue}`
         continue
       case 'removed':
-        difference = `${difference}\n  - ${property.key}: ${object1[property.key]}`
+        difference = `${difference}\n  - ${property.key}: ${property.oldValue}`
         continue
       case 'unchanged':
-        difference = `${difference}\n    ${property.key}: ${object1[property.key]}`
+        difference = `${difference}\n    ${property.key}: ${property.value}`
         continue
       default:
-        throw new Error(`Unknown type: '${property.type}'`)
+        throw new Error(`Unknown status: '${property.status}'`)
     }
   }
   return `{${difference}\n}`

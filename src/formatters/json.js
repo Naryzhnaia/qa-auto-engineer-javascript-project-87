@@ -1,11 +1,13 @@
-import getObjectDiff from './getObjectDiff.js'
+import getObjectDiff from './getTreeDiff.js'
 
-export default function getDiffJson(object1, object2) {
-  const properties = getObjectDiff(object1, object2)
+export default function getDiffJson(tree) {
   let difference = {}
-  for (const property of properties) {
-    if (property.type === 'unchanged' || property.type === 'added' || property.type === 'updated') {
-      difference[property.key] = object2[property.key]
+  for (const property of tree) {
+    if (property.status === 'unchanged' || property.status === 'added') {
+      difference[property.key] = property.value
+    }
+    if (property.status === 'updated') {
+      difference[property.key] = property.newValue
     }
   }
   return JSON.stringify(difference, null, 0)

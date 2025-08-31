@@ -1,15 +1,14 @@
-import getObjectDiff from './getObjectDiff.js'
+import getObjectDiff from './getTreeDiff.js'
 
-export default function getDiffPlain(object1, object2) {
-  const properties = getObjectDiff(object1, object2)
+export default function getDiffPlain(tree) {
   let difference = ''
-  for (const property of properties) {
-    switch (property.type) {
+  for (const property of tree) {
+    switch (property.status) {
       case 'added':
-        difference = `${difference}\nProperty '${property.key}' was added with value: ${object2[property.key]}`
+        difference = `${difference}\nProperty '${property.key}' was added with value: ${property.value}`
         continue
       case 'updated':
-        difference = `${difference}\nProperty '${property.key}' was updated. From ${object1[property.key]} to ${object2[property.key]}`
+        difference = `${difference}\nProperty '${property.key}' was updated. From ${property.oldValue} to ${property.newValue}`
         continue
       case 'removed':
         difference = `${difference}\nProperty '${property.key}' was removed`
@@ -17,7 +16,7 @@ export default function getDiffPlain(object1, object2) {
       case 'unchanged':
         continue
       default:
-        throw new Error(`Unknown type: '${property.type}'`)
+        throw new Error(`Unknown status: '${property.status}'`)
     }
   }
   return difference.trim()
