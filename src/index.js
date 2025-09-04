@@ -1,6 +1,16 @@
+import path from 'path'
+import fs from 'fs'
+import parse from './parsers.js'
 import format from './formatters/format.js'
-import getTreeDiff from './formatters/getTreeDiff.js'
-import getFileContent from './getFileContent.js'
+import getTreeDiff from './getTreeDiff.js'
+
+const getFileContent = (filePath) => {
+  const currentDir = process.cwd()
+  const fullFilePath = path.resolve(currentDir, filePath)
+  const fileContent = fs.readFileSync(fullFilePath)
+  const fileType = path.extname(filePath).slice(1)
+  return parse(fileType, fileContent)
+}
 
 export default function getDiff(filePath1, filePath2, outputFormat = 'stylish') {
   const data1 = getFileContent(filePath1)
