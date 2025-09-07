@@ -12,4 +12,4 @@ const parse = (contentType, contentString) => {
   }
 }
 
-export default parse 
+export default parse

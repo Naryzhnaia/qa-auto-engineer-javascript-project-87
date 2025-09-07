@@ -1,4 +1,3 @@
-
 const formatPlain = (tree) => {
   const plainDiff = tree.map((key) => {
     switch (key.type) {

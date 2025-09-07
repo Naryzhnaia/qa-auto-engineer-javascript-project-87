@@ -9,7 +9,7 @@ const formatJson = (tree) => {
           return [key.key, key.value2]
         }
       })
-      .filter(Boolean)
+      .filter(Boolean),
   )
   return JSON.stringify(jsonDiff, null, 0)
 }
