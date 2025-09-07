@@ -1,23 +1,19 @@
-export default function getDiffStylish(tree) {
-  let difference = ''
-  for (const key of tree) {
+const formatStylish = (tree) => {
+  const stylishDiff = tree.map((key) => {
     switch (key.type) {
       case 'added':
-        difference = `${difference}\n  + ${key.key}: ${key.value}`
-        continue
+        return `  + ${key.key}: ${key.value}`
       case 'updated':
-        difference = `${difference}\n  - ${key.key}: ${key.value1}`
-        difference = `${difference}\n  + ${key.key}: ${key.value2}`
-        continue
+        return `  - ${key.key}: ${key.value1}\n  + ${key.key}: ${key.value2}`
       case 'removed':
-        difference = `${difference}\n  - ${key.key}: ${key.value}`
-        continue
+        return `  - ${key.key}: ${key.value}`
       case 'unchanged':
-        difference = `${difference}\n    ${key.key}: ${key.value}`
-        continue
+        return `    ${key.key}: ${key.value}`
       default:
         throw new Error(`Unknown type: '${key.type}'`)
     }
-  }
-  return `{${difference}\n}`
+  })
+  return `{\n${stylishDiff.join('\n')}\n}`
 }
+
+export default formatStylish

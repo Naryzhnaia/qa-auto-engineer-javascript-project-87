@@ -1,21 +1,20 @@
-export default function getDiffPlain(tree) {
-  let difference = ''
-  for (const key of tree) {
+
+const formatPlain = (tree) => {
+  const plainDiff = tree.map((key) => {
     switch (key.type) {
       case 'added':
-        difference = `${difference}\nProperty '${key.key}' was added with value: ${key.value}`
-        continue
+        return `\nProperty '${key.key}' was added with value: ${key.value}`
       case 'updated':
-        difference = `${difference}\nProperty '${key.key}' was updated. From ${key.value1} to ${key.value2}`
-        continue
+        return `\nProperty '${key.key}' was updated. From ${key.value1} to ${key.value2}`
       case 'removed':
-        difference = `${difference}\nProperty '${key.key}' was removed`
-        continue
+        return `\nProperty '${key.key}' was removed`
       case 'unchanged':
-        continue
+        return
       default:
         throw new Error(`Unknown type: '${key.type}'`)
     }
-  }
-  return difference.trim()
+  })
+  return plainDiff.join('').trim()
 }
+
+export default formatPlain

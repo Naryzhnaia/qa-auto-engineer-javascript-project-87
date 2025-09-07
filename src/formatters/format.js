@@ -1,16 +1,18 @@
-import getDiffStylish from './stylish.js'
-import getDiffPlain from './plain.js'
-import getDiffJson from './json.js'
+import formatStylish from './stylish.js'
+import formatPlain from './plain.js'
+import formatJson from './json.js'
 
-export default function format(tree, outputFormat) {
+const format = (tree, outputFormat) => {
   switch (outputFormat) {
     case 'stylish':
-      return getDiffStylish(tree)
+      return formatStylish(tree)
     case 'plain':
-      return getDiffPlain(tree)
+      return formatPlain(tree)
     case 'json':
-      return getDiffJson(tree)
+      return formatJson(tree)
     default:
       throw new Error(`Unknown type of format: '${outputFormat}'`)
   }
 }
+
+export default format

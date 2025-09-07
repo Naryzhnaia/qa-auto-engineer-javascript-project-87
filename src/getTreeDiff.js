@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-export default function getTreeDiff(data1, data2) {
+const getTreeDiff = (data1, data2) => {
   const keys1 = Object.keys(data1)
   const keys2 = Object.keys(data2)
   const keys = _.sortBy(_.union(keys1, keys2))
@@ -11,7 +11,14 @@ export default function getTreeDiff(data1, data2) {
     if (!Object.hasOwn(data2, key)) {
       return { key: key, type: 'removed', value: data1[key] }
     }
-    return data1[key] === data2[key] ? { key: key, type: 'unchanged', value: data2[key] } : { key: key, type: 'updated', value1: data1[key], value2: data2[key] }
+    if (data1[key] === data2[key]) {
+      return { key: key, type: 'unchanged', value: data2[key] }
+    }
+    else {
+      return { key: key, type: 'updated', value1: data1[key], value2: data2[key] }
+    }
   })
   return tree
 }
+
+export default getTreeDiff

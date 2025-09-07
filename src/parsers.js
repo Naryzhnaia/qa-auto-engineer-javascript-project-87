@@ -1,6 +1,6 @@
 import yaml from 'js-yaml'
 
-export default function parse(contentType, contentString) {
+const parse = (contentType, contentString) => {
   switch (contentType) {
     case 'json':
       return JSON.parse(contentString)
@@ -11,3 +11,5 @@ export default function parse(contentType, contentString) {
       throw new Error(`Unknown type: '${contentType}'`)
   }
 }
+
+export default parse 

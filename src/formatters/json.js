@@ -1,12 +1,17 @@
-export default function getDiffJson(tree) {
-  let difference = {}
-  for (const key of tree) {
-    if (key.type === 'unchanged' || key.type === 'added') {
-      difference[key.key] = key.value
-    }
-    if (key.type === 'updated') {
-      difference[key.key] = key.value2
-    }
-  }
-  return JSON.stringify(difference, null, 0)
+const formatJson = (tree) => {
+  const jsonDiff = Object.fromEntries(
+    tree
+      .map((key) => {
+        if (key.type === 'unchanged' || key.type === 'added') {
+          return [key.key, key.value]
+        }
+        if (key.type === 'updated') {
+          return [key.key, key.value2]
+        }
+      })
+      .filter(Boolean)
+  )
+  return JSON.stringify(jsonDiff, null, 0)
 }
+
+export default formatJson
