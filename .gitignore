@@ -8,6 +8,6 @@ __fixtures__/notJson.jpeg
 
 coverage/
 
-bin/getdiff.js
-
 old/
+
+/formatters/json.js
